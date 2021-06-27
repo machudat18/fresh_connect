@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="screenStyle">
+        <item name="backgroundColor">#F5F5F5F5</item>
+    </style>
+</resources>
