@@ -83,10 +83,14 @@ class DeviceDetailsFragment(
             mCallBack.callBackDeviceDetails(item)
             with(item.device) {
                 Log.w("ScanResultAdapter", "Connecting to $address")
+                runOnUiThread {
+                    button_connect.text = "Đang kết nối tới $address"
+                }
                 connectGatt(context, false, gattCallback)
-                //createBond()
+                listenToBondStateChanges(mContext)
+                createBond()
             }
-           // listenToBondStateChanges(mContext)
+
         }
     }
 
@@ -128,10 +132,10 @@ class DeviceDetailsFragment(
     private val gattCallback = object : BluetoothGattCallback() {
         override fun onConnectionStateChange(gatt: BluetoothGatt, status: Int, newState: Int) {
             val deviceAddress = gatt.device.address
+            Log.d("gatt", status.toString())
             if (status == BluetoothGatt.GATT_SUCCESS) {
                 if (newState == BluetoothProfile.STATE_CONNECTED) {
                     Log.w("BluetoothGattCallback", "Successfully connected to $deviceAddress")
-
                     Handler(Looper.getMainLooper()).post {
                         gatt.discoverServices()
                     }
