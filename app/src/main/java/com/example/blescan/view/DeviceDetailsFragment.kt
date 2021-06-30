@@ -65,13 +65,20 @@ class DeviceDetailsFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        listenToBondStateChanges(mContext)
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        mContext.applicationContext.unregisterReceiver(
+            broadcastReceiver
+        )
     }
 
     private fun initView() {
+
         device_details_name.text = "Tên thiết bị : " + (item.device.name ?: "unamed")
         device_details_address.text = "Địa chỉ của thiết bị :" + item.device.address.toString()
-
         close.setOnClickListener {
             fragmentManager?.beginTransaction()
                 ?.remove(
@@ -86,9 +93,12 @@ class DeviceDetailsFragment(
                 runOnUiThread {
                     button_connect.text = "Đang kết nối tới $address"
                 }
-                connectGatt(context, false, gattCallback)
-                listenToBondStateChanges(mContext)
-                createBond()
+                if (connected) {
+                } else {
+                    connectGatt(context, false, gattCallback)
+
+                }
+
             }
 
         }
@@ -139,6 +149,8 @@ class DeviceDetailsFragment(
                     Handler(Looper.getMainLooper()).post {
                         gatt.discoverServices()
                     }
+                    Log.d("BluetoothGattCallback", "Trying to pair with: ${gatt.device.address}")
+                    gatt.device.createBond()
                     connected = true
                     // TODO: Store a reference to BluetoothGatt
                 } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
@@ -184,8 +196,7 @@ class DeviceDetailsFragment(
         }
         services.forEach { service ->
             val characteristicsTable = service.characteristics.joinToString(
-                separator = "\n|--",
-                prefix = "|--"
+                separator = "\n",
             ) { it.uuid.toString() }
 //            listService.add(
 //                ServiceModel(
