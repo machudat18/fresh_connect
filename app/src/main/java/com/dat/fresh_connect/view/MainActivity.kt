@@ -1,8 +1,8 @@
-package com.example.blescan.view
+package com.dat.fresh_connect.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.blescan.R
+import com.dat.fresh_connect.R
 
 
 class MainActivity : AppCompatActivity() {

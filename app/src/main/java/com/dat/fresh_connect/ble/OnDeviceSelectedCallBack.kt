@@ -1,4 +1,4 @@
-package com.example.blescan.ble
+package com.dat.fresh_connect.ble
 
 import android.bluetooth.le.ScanResult
 

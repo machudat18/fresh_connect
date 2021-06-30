@@ -1,4 +1,4 @@
-package com.example.blescan.view
+package com.dat.fresh_connect.view
 
 import android.Manifest
 import android.app.Activity
@@ -22,9 +22,9 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.blescan.R
-import com.example.blescan.ble.OnDeviceSelectedCallBack
-import com.example.blescan.ble.ScanResultAdapter
+import com.dat.fresh_connect.R
+import com.dat.fresh_connect.ble.OnDeviceSelectedCallBack
+import com.dat.fresh_connect.ble.ScanResultAdapter
 import kotlinx.android.synthetic.main.scan_device_frg.*
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)

@@ -1,4 +1,4 @@
-package com.example.blescan.view
+package com.dat.fresh_connect.view
 
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothGatt
@@ -19,9 +19,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import com.example.blescan.R
-import com.example.blescan.ble.OnDeviceSelectedCallBack
-import com.example.blescan.ble.ServiceModel
+import com.dat.fresh_connect.R
+import com.dat.fresh_connect.ble.OnDeviceSelectedCallBack
+import com.dat.fresh_connect.ble.ServiceModel
 import kotlinx.android.synthetic.main.details_device_frg.*
 
 

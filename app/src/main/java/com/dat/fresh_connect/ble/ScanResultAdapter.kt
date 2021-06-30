@@ -1,4 +1,4 @@
-package com.example.blescan.ble
+package com.dat.fresh_connect.ble
 
 import android.bluetooth.le.ScanResult
 import android.os.Build
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.example.blescan.R
+import com.dat.fresh_connect.R
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class ScanResultAdapter(

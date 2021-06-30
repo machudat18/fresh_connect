@@ -1,4 +1,4 @@
-package com.example.blescan
+package com.dat.fresh_connect
 
 import org.junit.Test
 
